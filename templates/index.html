@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Project Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>Project Dashboard</h1>
+
+        <p>Select a project to continue</p>
+
+    </div>
+
+
+    <div class="project-grid">
+
+        {% for project in projects %}
+
+        <a href="{{ url_for('project', project_name=project) }}"
+           class="project-card">
+
+            <div class="project-icon">
+                📁
+            </div>
+
+            <div class="project-name">
+                {{ project }}
+            </div>
+
+        </a>
+
+        {% endfor %}
+
+
+        <!-- Add Project -->
+
+        <button class="project-card add-project"
+                onclick="openProjectModal()">
+
+            <div class="project-icon">
+                +
+            </div>
+
+            <div class="project-name">
+                Add New Project
+            </div>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- Add Project Modal -->
+
+<div id="projectModal"
+     class="modal">
+
+    <div class="modal-content">
+
+        <span class="close"
+              onclick="closeProjectModal()">
+            &times;
+        </span>
+
+        <h2>Add New Project</h2>
+
+        <form action="/add_project"
+              method="POST">
+
+            <input
+                type="text"
+                name="project_name"
+                placeholder="Enter project name"
+                required
+            >
+
+            <button type="submit"
+                    class="primary-btn">
+
+                Add Project
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

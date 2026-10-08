@@ -1,0 +1,46 @@
+[
+    {
+        "name": "ECU / Family Name",
+        "value": "MG1CA030"
+    },
+    {
+        "name": "Housing",
+        "value": "SKA0910"
+    },
+    {
+        "name": "Lead Variant",
+        "value": "08W – CVT Scooter"
+    },
+    {
+        "name": "Customer Name",
+        "value": "Yamaha Motor compony (YMC)"
+    },
+    {
+        "name": "HW PJM",
+        "value": "Abbur Thammanna Gowda Pruthviraj"
+    },
+    {
+        "name": "AE / SW PJM",
+        "value": "SW: Rakesh R Ananda | AE: Thanikapoikayil Mathew Thomas"
+    },
+    {
+        "name": "Customer SOP Date",
+        "value": ""
+    },
+    {
+        "name": "Bosch SOP Date",
+        "value": ""
+    },
+    {
+        "name": "Pin Count",
+        "value": "112pin (2 X 56Pin)"
+    },
+    {
+        "name": "HW QGC0",
+        "value": ",QGC2,,QGC4,"
+    },
+    {
+        "name": "HW QGC4",
+        "value": ","
+    }
+]

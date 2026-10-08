@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ project_name }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="project-page">
+
+
+    <!-- HEADER -->
+
+    <div class="project-header">
+
+        <a href="/"
+           class="back-btn">
+
+            ← Back
+
+        </a>
+
+        <div>
+
+            <h1>{{ project_name }}</h1>
+
+            <p>Project Documentation</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- SPLIT -->
+
+    <div class="split-container">
+
+
+        <!-- ==================================================
+             LEFT : TIMELINE
+        =================================================== -->
+
+        <div class="panel timeline-panel">
+
+            <div class="panel-header">
+
+                <span class="panel-icon">
+                    📅
+                </span>
+
+                <div>
+
+                    <h2>Timeline</h2>
+
+                    <p>
+                        Upload the project timeline PDF
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="upload-section">
+
+                <form id="timelineForm"
+                      enctype="multipart/form-data">
+
+                    <input
+                        type="hidden"
+                        name="project_name"
+                        value="{{ project_name }}"
+                    >
+
+
+                    <label
+                        for="timelineFile"
+                        class="upload-box">
+
+                        <div class="upload-icon">
+                            📄
+                        </div>
+
+                        <h3>
+                            Upload Timeline PDF
+                        </h3>
+
+                        <p>
+                            Click here to select a PDF
+                        </p>
+
+                        <input
+                            type="file"
+                            id="timelineFile"
+                            name="timeline_pdf"
+                            accept=".pdf"
+                            hidden
+                        >
+
+                    </label>
+
+
+                    <div
+                        id="timelineFileName"
+                        class="file-name">
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn">
+
+                        Upload Timeline
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div
+                id="timelineStatus"
+                class="status">
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             RIGHT : KICKOFF
+        =================================================== -->
+
+        <div class="panel kickoff-panel">
+
+
+            <div class="panel-header">
+
+                <span class="panel-icon">
+                    🚀
+                </span>
+
+                <div>
+
+                    <h2>Kickoff</h2>
+
+                    <p>
+                        Upload kickoff document
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- KICKOFF UPLOAD -->
+
+            <div class="upload-section">
+
+                <form
+                    id="kickoffForm"
+                    enctype="multipart/form-data">
+
+                    <input
+                        type="hidden"
+                        name="project_name"
+                        value="{{ project_name }}"
+                    >
+
+
+                    <label
+                        for="kickoffFile"
+                        class="upload-box">
+
+                        <div class="upload-icon">
+                            📄
+                        </div>
+
+                        <h3>
+                            Upload Kickoff PDF
+                        </h3>
+
+                        <p>
+                            Click here to select a PDF
+                        </p>
+
+                        <input
+                            type="file"
+                            id="kickoffFile"
+                            name="kickoff_pdf"
+                            accept=".pdf"
+                            hidden
+                        >
+
+                    </label>
+
+
+                    <div
+                        id="kickoffFileName"
+                        class="file-name">
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn">
+
+                        Upload Kickoff PDF
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div
+                id="kickoffStatus"
+                class="status">
+            </div>
+
+
+            <!-- ==================================================
+                 DETAILS
+            =================================================== -->
+
+            <div class="details-section">
+
+                <div class="section-title-row">
+
+                    <div>
+
+                        <h2>
+                            Extracted / Manual Details
+                        </h2>
+
+                        <p>
+                            Extracted values can be edited
+                            or entered manually.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DYNAMIC FIELDS -->
+
+                <div
+                    id="detailsContainer"
+                    class="details-form">
+
+                </div>
+
+
+                <!-- ADD FIELD -->
+
+                <button
+                    type="button"
+                    class="add-field-btn"
+                    onclick="addNewField()">
+
+                    + Add Field
+
+                </button>
+
+
+                <!-- SAVE -->
+
+                <button
+                    type="button"
+                    class="save-btn"
+                    onclick="saveDetails()">
+
+                    Save Details
+
+                </button>
+
+
+                <div
+                    id="detailsStatus"
+                    class="status">
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================
+                 PHOTO
+            =================================================== -->
+
+            <div class="photo-section">
+
+                <div class="section-title-row">
+
+                    <div>
+
+                        <h2>
+                            Project Photo
+                        </h2>
+
+                        <p>
+                            Upload a project / ECU photo
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    id="photoForm"
+                    enctype="multipart/form-data">
+
+                    <input
+                        type="hidden"
+                        name="project_name"
+                        value="{{ project_name }}"
+                    >
+
+
+                    <label
+                        for="projectPhoto"
+                        class="photo-upload-box">
+
+                        <div class="photo-upload-icon">
+                            📷
+                        </div>
+
+                        <h3>
+                            Upload Photo
+                        </h3>
+
+                        <p>
+                            JPG, PNG, BMP or WEBP
+                        </p>
+
+                        <input
+                            type="file"
+                            id="projectPhoto"
+                            name="project_photo"
+                            accept="image/*"
+                            hidden
+                        >
+
+                    </label>
+
+
+                    <div
+                        id="photoFileName"
+                        class="file-name">
+                    </div>
+
+
+                    <div
+                        id="photoPreviewContainer"
+                        class="photo-preview-container">
+
+                        <img
+                            id="photoPreview"
+                            src=""
+                            alt="Project Photo"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn">
+
+                        Upload Photo
+
+                    </button>
+
+                </form>
+
+
+                <div
+                    id="photoStatus"
+                    class="status">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
